@@ -1,14 +1,15 @@
 #importar modulos
 import turtle
 import random
+from typing import Self
 
 #abrir tela
-tela = turtle.screen()
+tela = turtle.Screen()
 tela.bgcolor('lavender')
 
 #definir funcao para delimitar area pela qual a tartaruga ira se mover
 def desenhaparede():
-    caneta = turtle.Turtle
+    caneta = turtle.Turtle()
     caneta.speed(0)
     caneta.up()
     caneta.goto(-199, 199)
@@ -16,7 +17,7 @@ def desenhaparede():
     for i in range(4):
         caneta.forward(400)
         caneta.right(90)
-    caneta.hideturtle
+    caneta.hideturtle()
 
 #definir movimentos da tartaruga
 def esquerda():
@@ -46,17 +47,17 @@ def morte():
         vidas -= 1
         veneno.goto(random.randint(-200, 200), random.randint(-200, 200))
     if vidas == 2:
-        vidav3.hiderturtle()
+        vidav3.hideturtle()
     if vidas == 1:
-        vidav2.hiderturtle()
+        vidav2.hideturtle()
     if vidas == 0:
-        vidav1.hiderturtle()
+        vidav1.hideturtle()
         tela.bye()
 
 def alimentacao():
     global pontos 
     if tartaruga.distance(comida)<25:
-        vidas += 1
+        pontos += 1
         apagarpontos()
         escreverpontos()
         comida.goto(random.randint(-200, 200), random.randint(-200, 200))
@@ -95,19 +96,19 @@ desenhaparede()
 letreiro = turtle.Turtle()
 letreiro.speed(0)
 letreiro.penup()
-letreiro.hideturtle
+letreiro.hideturtle()
 letreiro.goto(0, 200)
 letreiro.write('pontos: ', align='center', font=16)
 
 #criar placar
-poontos = 0
+pontos = 0
 placar = turtle.Turtle()
 placar.speed(0)
 placar.goto(0,0)
 placar.pensize(0)
 placar.penup()
 placar.pendown
-placar.hideturtle
+placar.hideturtle()
 
 def escreverpontos():
     placar_write = pontos 
@@ -142,25 +143,25 @@ vidav3.goto(-159, 211)
 vidav3.speed(0)
 
 #criar tartaruga
-tartaruga = turtle.Turtle
+tartaruga = turtle.Turtle()
 tartaruga.shape('turtle')
 tartaruga.color('sea green')
 tartaruga.penup()
-turtle.onkeypress(cima, 'Up')
-turtle.onkeypress(baixo, 'Down')
-turtle.onkeypress(esquerda, 'Left')
-turtle.onkeypress(baixo, 'Right')
+turtle.onkeypress(cima, 'w')
+turtle.onkeypress(baixo, 's')
+turtle.onkeypress(esquerda, 'a')
+turtle.onkeypress(direita, 'd')
 turtle.listen()
 
 #criar comida e veneno
-comida = turtle.Turtle
+comida = turtle.Turtle()
 comida.shape('circle')
 comida.color('crimson')
 comida.penup()
 comida.speed(10)
 comida.setposition(random.randint(-200, 200), random.randint(-200, 200))
 
-veneno = turtle.Turtle
+veneno = turtle.Turtle()
 veneno.shape('circle')
 veneno.color('purple')
 veneno.penup()
